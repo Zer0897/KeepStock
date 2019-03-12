@@ -1,0 +1,27 @@
+#:kivy 1.10.1
+
+<LoginPage>:
+    f_user: username
+    f_pass: password
+    
+    GridLayout:
+        rows: 2
+        cols: 2
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: 'User Name:'
+        TextInput:
+            id: username
+            multiline: False
+        Label:
+            text: 'Password'
+        TextInput:
+            id: password
+            multiline: False
+            password: True
+
+        Button:
+            text: 'Submit'
+            on_press: root.submit(username.text, password.text)
