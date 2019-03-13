@@ -13,6 +13,3 @@ class Entry(TextInput):
         )
         self.padding_x = (self.width - text_width) / 2
 
-
-class LoadingScreen(Image):
-    pass
