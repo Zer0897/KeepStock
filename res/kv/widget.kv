@@ -1,0 +1,16 @@
+#:kivy 1.10.1
+
+<Entry>:
+    multiline: False
+    padding_x: self.width / 2
+    on_text: root.update_padding()
+
+    on_triple_tap: root.select_all()
+
+<LabelTitle@Label>:
+    font_size: 50
+    valign: 'top'
+
+<HeadingLabel@Label>:
+    font_size: 25
+

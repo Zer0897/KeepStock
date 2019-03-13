@@ -3,25 +3,53 @@
 <LoginPage>:
     f_user: username
     f_pass: password
-    
-    GridLayout:
-        rows: 2
-        cols: 2
-        padding: 10
-        spacing: 10
 
-        Label:
-            text: 'User Name:'
-        TextInput:
+    rows: 3
+
+    AnchorLayout:
+        anchor_y: 'top'
+
+        LabelTitle:
+            text: 'KeepStock'
+
+    GridLayout:
+        rows: 4
+
+        HeadingLabel:
+            text: 'User'
+
+        Entry:
             id: username
             multiline: False
-        Label:
+
+        HeadingLabel:
             text: 'Password'
-        TextInput:
+
+        Entry:
             id: password
-            multiline: False
             password: True
+
+    AnchorLayout:
+        anchor_y: 'bottom'
 
         Button:
             text: 'Submit'
             on_press: root.submit(username.text, password.text)
+
+            size_hint: None, None
+            width: 200
+            height: 80
+
+
+
+<SplashPage>:
+
+    anchor_x: 'center'
+    anchor_y: 'center'
+
+    LoginPage:
+        id: login
+
+        size_hint: (.8, .8)
+
+
