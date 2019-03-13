@@ -4,6 +4,8 @@
     f_user: username
     f_pass: password
 
+
+
     rows: 3
 
     AnchorLayout:
@@ -12,34 +14,38 @@
         LabelTitle:
             text: 'KeepStock'
 
-    GridLayout:
-        rows: 4
+    AnchorLayout:
+        GridLayout:
+            size_hint: .5, 1
+            rows: 4
 
-        HeadingLabel:
-            text: 'User'
+            spacing: 10
 
-        Entry:
-            id: username
-            multiline: False
+            HeadingLabel:
+                text: 'User'
 
-        HeadingLabel:
-            text: 'Password'
+            Entry:
+                id: username
+                on_text_validate: root.submit()
 
-        Entry:
-            id: password
-            password: True
+                focus: True
+
+            HeadingLabel:
+                text: 'Password'
+
+            Entry:
+                id: password
+                password: True
+                on_text_validate: root.submit()
 
     AnchorLayout:
         anchor_y: 'bottom'
 
         Button:
             text: 'Submit'
-            on_press: root.submit(username.text, password.text)
+            on_press: root.submit()
 
-            size_hint: None, None
-            width: 200
-            height: 80
-
+            size_hint: .3, .5
 
 
 <SplashPage>:

@@ -1,15 +1,23 @@
 #:kivy 1.10.1
 
+#:set primary_color (1, .4, 0, 1)
+
+#:set secondary_color (.5, .5, .5, 1)
+
 <Entry>:
     multiline: False
     padding_x: self.width / 2
-    on_text: root.update_padding()
+    selection_color: (*primary_color[:-1], .5)
 
-    on_triple_tap: root.select_all()
+    on_text: root.update_padding()
+    on_triple_tap: root.on_quad_touch()
+
+    write_tab: False
 
 <LabelTitle@Label>:
     font_size: 50
     valign: 'top'
+    color: primary_color
 
 <HeadingLabel@Label>:
     font_size: 25
