@@ -1,7 +1,7 @@
 from kivy.uix.textinput import TextInput
 from kivy.uix.image import Image
-
-from . import RES
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
 
 class Entry(TextInput):
 
@@ -13,3 +13,10 @@ class Entry(TextInput):
         )
         self.padding_x = (self.width - text_width) / 2
 
+
+class Notification(Popup):
+
+    @classmethod
+    def info(cls, txt):
+        pop = cls(content=Label(text=txt), title='Info')
+        pop.open()
