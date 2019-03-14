@@ -1,5 +1,13 @@
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.label import Label
+from kivy.properties import ListProperty
+
+
+# class Form(GridLayout):
+
+
 
 
 class Entry(TextInput):
@@ -11,6 +19,10 @@ class Entry(TextInput):
             self._label_cached
         )
         self.padding_x = (self.width - text_width) / 2
+
+
+class NamedEntry(BoxLayout):
+    pass
 
 
 class BaseLabel(Label):

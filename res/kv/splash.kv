@@ -21,22 +21,17 @@
 
             spacing: 10
 
-            HeadingLabel:
-                text: 'User'
-
-            Entry:
+            NamedEntry:
                 id: username
-                on_text_validate: root.submit()
 
+                name: 'User'
                 focus: True
 
-            HeadingLabel:
-                text: 'Password'
-
-            Entry:
+            NamedEntry:
                 id: password
+
                 password: True
-                on_text_validate: root.submit()
+                name: 'Password'
 
     AnchorLayout:
         anchor_y: 'bottom'

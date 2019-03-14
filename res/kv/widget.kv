@@ -16,6 +16,30 @@
     on_triple_tap: root.on_quad_touch()
 
     write_tab: False
+    required: False
+
+
+<NamedEntry>:
+    name: ''
+    value: entry
+
+    required: False
+    password: False
+
+    orientation: 'horizontal'
+
+    HeadingLabel:
+        padding: 0, 10
+        text: root.name
+
+    AnchorLayout:
+        anchor_y: 'center'
+        Entry:
+            size_hint: .5, 1
+            id: entry
+            password: root.password
+
+
 
 <BaseLabel@Label>:
     font_size: 15
