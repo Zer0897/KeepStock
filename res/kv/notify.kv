@@ -1,0 +1,25 @@
+#:kivy 1.10.1
+
+
+<Notify>:
+    font_size: 25
+    text: self.message
+
+
+<Warn>:
+    color: (1, 0, 0, 1)
+
+
+<Err>:
+    font_size: 40
+
+
+<Notification>:
+    title: root.severity.name.title()
+    title_align: 'center'
+    title_color: primary_color
+    title_size: 20
+
+    size_hint: .3, .3
+
+    content: root.severity.value()
