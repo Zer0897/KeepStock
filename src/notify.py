@@ -1,13 +1,13 @@
-
 from kivy.uix.gridlayout import GridLayout
 from kivy.properties import StringProperty
 from kivy.uix.popup import Popup
-from kivy.uix.label import Label
+from kivy.factory import Factory
 
 from enum import Enum
 
+from .widget import BaseLabel
 
-class Notify(Label):
+class Notify(BaseLabel):
     message = StringProperty()
 
 
@@ -29,7 +29,7 @@ class Notification(Popup):
 
     def __init__(self, *args, severity=Severity.INFO, **kwargs):
         self.severity = severity
-        
+
         super().__init__(*args, **kwargs)
 
 

@@ -1,4 +1,5 @@
 from kivy.uix.textinput import TextInput
+from kivy.uix.label import Label
 
 
 class Entry(TextInput):
@@ -10,3 +11,7 @@ class Entry(TextInput):
             self._label_cached
         )
         self.padding_x = (self.width - text_width) / 2
+
+
+class BaseLabel(Label):
+    pass

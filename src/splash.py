@@ -7,7 +7,7 @@ class LoginPage(GridLayout):
 
     def submit(self):
         print(self.ids.username.text, self.ids.password.text, sep='\n')
-        Notification.err('Test')
+        Notification.info('This is a longer test, with more text. I want more text so I can test the limits of the label widget I am using.')
 
 
 class SplashPage(AnchorLayout):
