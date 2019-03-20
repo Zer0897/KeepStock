@@ -5,7 +5,7 @@ from kivy.factory import Factory
 
 from enum import Enum
 
-from .widget import BaseLabel
+from widget import BaseLabel
 
 class Notify(BaseLabel):
     message = StringProperty()

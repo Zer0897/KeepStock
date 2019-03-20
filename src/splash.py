@@ -1,7 +1,7 @@
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.anchorlayout import AnchorLayout
 
-from .notify import Notification
+from notify import Notification
 
 class LoginPage(GridLayout):
 
