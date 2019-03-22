@@ -7,7 +7,7 @@ from notify import Notification
 class LoginPage(BoxLayout):
 
     def submit(self):
-        Notification.info('Foo'*10)
+        Notification.info('Foo')
 
 
 class SplashPage(AnchorLayout):

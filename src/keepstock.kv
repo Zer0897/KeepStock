@@ -39,8 +39,10 @@
 
 
 <Notify>:
+    halign: 'center'
+    valign: 'center'
     text: self.message
-    font_scale: .5
+    font_size: '30sp'
 
 
 <Warn>:
@@ -55,11 +57,9 @@
     title: root.severity.name.title()
     title_align: 'center'
     title_color: primary_color
+    title_size: '50sp'
 
-
-
-    size_hint: .4, .4
-
+    size_hint: .8, .8
     content: root.severity.value()
 
 
