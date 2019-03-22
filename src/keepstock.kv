@@ -3,10 +3,45 @@
 #:set primary_color (1, .4, 0, 1)
 #:set secondary_color (.5, .5, .5, 1)
 
+<BaseLabel>:
+    font_scale: 0.5
+
+    size: self.texture_size
+    text_size: root.width, None
+    font_size: self.height * self.font_scale
+
+
+<PrimaryLabel@BaseLabel>:
+    font_scale: .7
+    color: primary_color
+
+
+<SecondaryLabel@BaseLabel>:
+    color: secondary_color
+
+
+<HeadingLabel@SecondaryLabel>:
+    halign: 'center'
+
+
+<LabelTitle@PrimaryLabel>:
+    halign: 'center'
+    valign: 'top'
+
+
+<BaseButton@Button>:
+    font_scale: .3
+
+    font_size: self.height * self.font_scale
+
+
+<PrimaryButton@BaseButton>:
+    background_color: secondary_color
+
 
 <Notify>:
-    font_size: 25
     text: self.message
+    font_scale: .2
 
 
 <Warn>:
@@ -14,7 +49,7 @@
 
 
 <Err>:
-    font_size: 40
+    bold: True
 
 
 <Notification>:
@@ -27,24 +62,68 @@
 
     content: root.severity.value()
 
-<LoginPage>:
-    rows: 3
+
+<Form>:
+    orientation: 'vertical'
+
+
+<Entry>:
+    multiline: False
+
+    padding: self.width / 2, self.height / 4
+    selection_color: (*primary_color[:-1], .5)
+
+    on_text: root.update_padding()
+    on_triple_tap: root.on_quad_touch()
+
+    write_tab: False
+    required: False
+
+    font_size: self.height / 2
+
+
+<NamedEntry>:
+    value: value
+
+    required: False
+    password: False
+
+    orientation: 'vertical'
+
+    HeadingLabel:
+        text: root.name.title()
 
     AnchorLayout:
+        anchor_y: 'center'
+        Entry:
+            id: value
+            size_hint: .5, 1
+            password: root.password
+
+
+<LoginPage>:
+    orientation: 'vertical'
+    spacing: 0, 100
+
+    AnchorLayout:
+        size_hint: 1, .4
         anchor_y: 'top'
 
         LabelTitle:
             text: 'KeepStock'
 
     AnchorLayout:
+        halign: 'center'
         Form:
+            spacing: 0, 50
             entries: ['user', 'password']
             private: ['password']
 
     AnchorLayout:
         anchor_y: 'bottom'
+        size_hint: 1, .6
 
-        Button:
+        PrimaryButton:
             text: 'Submit'
             on_press: root.submit()
 
@@ -59,62 +138,3 @@
     LoginPage:
         id: login
 
-        size_hint: (.8, .8)
-
-<Form>:
-    orientation: 'vertical'
-
-
-<Entry>:
-    size_hint_y: None
-    multiline: False
-    padding_x: self.width / 2
-    selection_color: (*primary_color[:-1], .5)
-
-    on_text: root.update_padding()
-    on_triple_tap: root.on_quad_touch()
-
-    write_tab: False
-    required: False
-
-    valign: 'center'
-
-    font_size: self.height / 2
-
-
-
-
-<NamedEntry>:
-    value: value
-
-    required: False
-    password: False
-
-    orientation: 'vertical'
-
-    HeadingLabel:
-        padding: 0, 10
-        text: root.name.title()
-
-    AnchorLayout:
-        anchor_y: 'center'
-        Entry:
-            id: value
-            size_hint: .5, 1
-            password: root.password
-
-
-
-<BaseLabel>:
-    font_size: 15
-    text_size: root.width, None
-
-
-<HeadingLabel@BaseLabel>:
-    font_size: 25
-    halign: 'center'
-
-
-<LabelTitle@HeadingLabel>:
-    font_size: 50
-    color: primary_color

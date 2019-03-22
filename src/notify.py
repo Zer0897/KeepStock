@@ -32,7 +32,6 @@ class Notification(Popup):
 
         super().__init__(*args, **kwargs)
 
-
     def create(self, message: str):
         self.content.message = message
         self.open()

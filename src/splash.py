@@ -1,12 +1,13 @@
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.anchorlayout import AnchorLayout
+from kivy.uix.boxlayout import BoxLayout
 
 from notify import Notification
 
-class LoginPage(GridLayout):
+class LoginPage(BoxLayout):
 
     def submit(self):
-        Notification.info('This is a longer test, with more text. I want more text so I can test the limits of the label widget I am using.')
+        Notification.info('Foo'*10)
 
 
 class SplashPage(AnchorLayout):
