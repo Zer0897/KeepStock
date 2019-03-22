@@ -4,15 +4,13 @@
 #:set secondary_color (.5, .5, .5, 1)
 
 <BaseLabel>:
-    font_scale: 0.5
 
     size: self.texture_size
     text_size: root.width, None
-    font_size: self.height * self.font_scale
+    font_size: '20sp'
 
 
 <PrimaryLabel@BaseLabel>:
-    font_scale: .7
     color: primary_color
 
 
@@ -22,17 +20,18 @@
 
 <HeadingLabel@SecondaryLabel>:
     halign: 'center'
+    font_size: '40sp'
 
 
 <LabelTitle@PrimaryLabel>:
+    font_size: '70sp'
     halign: 'center'
     valign: 'top'
 
 
 <BaseButton@Button>:
-    font_scale: .3
 
-    font_size: self.height * self.font_scale
+    font_size: '30sp'
 
 
 <PrimaryButton@BaseButton>:
@@ -41,7 +40,7 @@
 
 <Notify>:
     text: self.message
-    font_scale: .2
+    font_scale: .5
 
 
 <Warn>:
@@ -56,7 +55,8 @@
     title: root.severity.name.title()
     title_align: 'center'
     title_color: primary_color
-    title_size: 20
+
+
 
     size_hint: .4, .4
 
@@ -97,17 +97,18 @@
         anchor_y: 'center'
         Entry:
             id: value
-            size_hint: .5, 1
+            size_hint: .5, .7
             password: root.password
 
 
 <LoginPage>:
     orientation: 'vertical'
-    spacing: 0, 100
 
     AnchorLayout:
         size_hint: 1, .4
         anchor_y: 'top'
+        padding: 0, 20
+
 
         LabelTitle:
             text: 'KeepStock'
@@ -115,9 +116,8 @@
     AnchorLayout:
         halign: 'center'
         Form:
-            spacing: 0, 50
-            entries: ['user', 'password']
-            private: ['password']
+            entries: ['Username', 'Password']
+            private: ['Password']
 
     AnchorLayout:
         anchor_y: 'bottom'
@@ -127,7 +127,7 @@
             text: 'Submit'
             on_press: root.submit()
 
-            size_hint: .3, .5
+            size_hint: .5, .5
 
 
 <SplashPage>:
