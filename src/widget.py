@@ -21,7 +21,6 @@ class Form(BoxLayout):
                 entry.password = True
 
     def on_required(self, *args):
-        print(args)
         for entry in self.children:
             if entry.name in self.required:
                 entry.required = True
