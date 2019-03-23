@@ -2,6 +2,7 @@
 
 #:set primary_color (1, .4, 0, 1)
 #:set secondary_color (.5, .5, .5, 1)
+#:set mark_required '(*)'
 
 <BaseLabel>:
 
@@ -91,7 +92,7 @@
     orientation: 'vertical'
 
     HeadingLabel:
-        text: root.name.title()
+        text: root.name.title() + mark_required if root.required else ''
 
     AnchorLayout:
         anchor_y: 'center'

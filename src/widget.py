@@ -8,6 +8,7 @@ class Form(BoxLayout):
 
     entries = ListProperty()
     private = ListProperty()
+    required = ListProperty()
 
     def on_entries(self, *args):
         for name in self.entries:
@@ -18,6 +19,12 @@ class Form(BoxLayout):
         for entry in self.children:
             if entry.name in self.private:
                 entry.password = True
+
+    def on_required(self, *args):
+        print(args)
+        for entry in self.children:
+            if entry.name in self.required:
+                entry.required = True
 
 
 class Entry(TextInput):
