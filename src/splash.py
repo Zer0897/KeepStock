@@ -7,7 +7,9 @@ from notify import Notification
 class LoginPage(BoxLayout):
 
     def submit(self):
-        Notification.info('Foo')
+        if not all(self.form.as_dict().values()):
+            Notification.info('All fields are required.')
+
 
 
 class SplashPage(AnchorLayout):

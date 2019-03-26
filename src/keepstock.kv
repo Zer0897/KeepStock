@@ -2,6 +2,7 @@
 
 #:set primary_color (1, .4, 0, 1)
 #:set secondary_color (.5, .5, .5, 1)
+#:set red (1, 0, 0, 1)
 #:set mark_required '(*)'
 
 <BaseLabel>:
@@ -47,7 +48,7 @@
 
 
 <Warn>:
-    color: (1, 0, 0, 1)
+    color: red
 
 
 <Err>:
@@ -71,10 +72,8 @@
 <Entry>:
     multiline: False
 
-    padding: self.width / 2, self.height / 4
     selection_color: (*primary_color[:-1], .5)
 
-    on_text: root.update_padding()
     on_triple_tap: root.on_quad_touch()
 
     write_tab: False
@@ -92,24 +91,26 @@
     orientation: 'vertical'
 
     HeadingLabel:
-        text: root.name.title() + mark_required if root.required else ''
+        text: root.name.title()
 
     AnchorLayout:
         anchor_y: 'center'
         Entry:
             id: value
-            size_hint: .5, .7
+            size_hint: .5, .5
             password: root.password
+
+            hint_text: '*' if root.required else ''
+            hint_text_color: red[:-1] + (.7,)
 
 
 <LoginPage>:
     orientation: 'vertical'
+    form: form
 
     AnchorLayout:
         size_hint: 1, .4
         anchor_y: 'top'
-        padding: 0, 20
-
 
         LabelTitle:
             text: 'KeepStock'
@@ -117,8 +118,10 @@
     AnchorLayout:
         halign: 'center'
         Form:
+            id: form
             entries: ['Username', 'Password']
             private: ['Password']
+            required: self.entries
 
     AnchorLayout:
         anchor_y: 'bottom'

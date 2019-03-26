@@ -15,6 +15,7 @@ class Form(BoxLayout):
             self.add_widget(
                 NamedEntry(name=name)
             )
+
     def on_private(self, *args):
         for entry in self.children:
             if entry.name in self.private:
@@ -25,16 +26,15 @@ class Form(BoxLayout):
             if entry.name in self.required:
                 entry.required = True
 
+    def as_dict(self) -> dict:
+        return {w.name: w.value.text for w in self.as_list()}
+
+    def as_list(self) -> list:
+        return [w for w in self.children if w.name in self.entries]
+
 
 class Entry(TextInput):
-
-    def update_padding(self, *args):
-        text_width = self._get_text_width(
-            self.text,
-            self.tab_width,
-            self._label_cached
-        )
-        self.padding_x = (self.width - text_width) / 2
+    ...
 
 
 class NamedEntry(BoxLayout):
