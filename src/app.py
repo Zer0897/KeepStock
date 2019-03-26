@@ -1,11 +1,14 @@
 import kivy
+import meta
 
-from kivy.uix.label import Label
 from kivy.app import App
-from splash import SplashPage
 
 
 class KeepStockApp(App):
+
+    pages = {
+
+    }
 
     def build(self):
         return SplashPage()

@@ -11,7 +11,5 @@ class LoginPage(BoxLayout):
             Notification.info('All fields are required.')
 
 
-
 class SplashPage(AnchorLayout):
     pass
-
