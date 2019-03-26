@@ -4,10 +4,10 @@ from kivy.uix.popup import Popup
 from kivy.factory import Factory
 
 from enum import Enum
-
+from kivy.uix.boxlayout import BoxLayout
 from widget import BaseLabel
 
-class Notify(BaseLabel):
+class Notify(BoxLayout):
     message = StringProperty()
 
 
@@ -34,6 +34,7 @@ class Notification(Popup):
 
     def create(self, message: str):
         self.content.message = message
+        self.content.btn.bind(on_press=self.dismiss)
         self.open()
 
     @classmethod

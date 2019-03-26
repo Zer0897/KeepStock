@@ -32,8 +32,8 @@
 
 
 <BaseButton@Button>:
-
     font_size: '30sp'
+    size_hint: .9, .5
 
 
 <PrimaryButton@BaseButton>:
@@ -41,10 +41,19 @@
 
 
 <Notify>:
-    halign: 'center'
-    valign: 'center'
-    text: self.message
-    font_size: '30sp'
+    btn: btn
+    orientation: 'vertical'
+    BaseLabel:
+        halign: 'center'
+        valign: 'center'
+        text: root.message
+        font_size: '30sp'
+
+    AnchorLayout:
+        anchor_y: 'bottom'
+        BaseButton:
+            id: btn
+            text: 'Okay'
 
 
 <Warn>:
@@ -130,9 +139,6 @@
         PrimaryButton:
             text: 'Submit'
             on_press: root.submit()
-
-            size_hint: .5, .5
-
 
 <SplashPage>:
 
