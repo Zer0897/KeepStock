@@ -1,14 +1,8 @@
-import kivy
-import meta
-
 from kivy.app import App
+from manager import Manager
 
 
 class KeepStockApp(App):
 
-    pages = {
-
-    }
-
     def build(self):
-        return SplashPage()
+        return Manager()

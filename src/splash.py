@@ -1,15 +1,13 @@
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.anchorlayout import AnchorLayout
-from kivy.uix.boxlayout import BoxLayout
-
+from kivy.uix.screenmanager import Screen
 from notify import Notification
 
-class LoginPage(BoxLayout):
+
+class LoginPage(Screen):
 
     def submit(self):
         if not all(self.form.as_dict().values()):
             Notification.info('All fields are required.')
 
 
-class SplashPage(AnchorLayout):
+class SplashPage(Screen):
     pass

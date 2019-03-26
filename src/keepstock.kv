@@ -106,31 +106,32 @@
 
 
 <LoginPage>:
-    orientation: 'vertical'
     form: form
+    BoxLayout:
+        orientation: 'vertical'
 
-    AnchorLayout:
-        size_hint: 1, .4
-        anchor_y: 'top'
+        AnchorLayout:
+            size_hint: 1, .4
+            anchor_y: 'top'
 
-        TitleLabel:
-            text: 'KeepStock'
+            TitleLabel:
+                text: 'KeepStock'
 
-    AnchorLayout:
-        halign: 'center'
-        Form:
-            id: form
-            entries: ['Username', 'Password']
-            private: ['Password']
-            required: self.entries
+        AnchorLayout:
+            halign: 'center'
+            Form:
+                id: form
+                entries: ['Username', 'Password']
+                private: ['Password']
+                required: self.entries
 
-    AnchorLayout:
-        anchor_y: 'bottom'
-        size_hint: 1, .6
+        AnchorLayout:
+            anchor_y: 'bottom'
+            size_hint: 1, .6
 
-        PrimaryButton:
-            text: 'Submit'
-            on_press: root.submit()
+            PrimaryButton:
+                text: 'Submit'
+                on_press: root.submit()
 
 <SplashPage>:
     anchor_x: 'center'
