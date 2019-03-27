@@ -12,26 +12,26 @@
     font_size: '20sp'
 
 
-<PrimaryLabel@BaseLabel>:
+<PrimaryLabel>:
     color: primary_color
 
 
-<SecondaryLabel@BaseLabel>:
+<SecondaryLabel>:
     color: secondary_color
 
 
-<HeadingLabel@SecondaryLabel>:
+<HeadingLabel>:
     halign: 'center'
     font_size: '40sp'
 
 
-<TitleLabel@PrimaryLabel>:
+<TitleLabel>:
     font_size: '70sp'
     halign: 'center'
     valign: 'top'
 
 
-<BaseButton@Button>:
+<BaseButton>:
     font_size: '30sp'
     size_hint: .9, .5
 
@@ -105,7 +105,34 @@
             hint_text_color: red[:-1] + (.7,)
 
 
+<View>:
+    orientation: 'vertical'
+    ScreenManager:
+        id: manager
+        current: 'splash'
+
+        SplashPage:
+        MenuPage:
+
+
+<NavigationBar>:
+    manager: None
+    items: ['Inventory', 'Manage']
+
+
+<NavigationButton>:
+    on_press: root.parent.manager.current = self.text.lower()
+
+
+<SplashPage>:
+    name: 'splash'
+
+    LoginPage:
+        id: login
+
+
 <LoginPage>:
+    name: 'login'
     form: form
     BoxLayout:
         orientation: 'vertical'
@@ -133,14 +160,30 @@
                 text: 'Submit'
                 on_press: root.parent.manager.current = 'menu'
 
-<SplashPage>:
-    anchor_x: 'center'
-    anchor_y: 'center'
-
-    LoginPage:
-        id: login
-
 
 <MenuPage>:
-    TitleLabel:
-        text: 'Foo'
+    name: 'menu'
+
+    BoxLayout:
+        orientation: 'vertical'
+        ScreenManager:
+            id: manager
+            InventoryPage:
+            ManagePage:
+
+        NavigationBar:
+            manager: manager
+
+
+<InventoryPage>:
+    name: 'inventory'
+    BoxLayout:
+        TitleLabel:
+            text: 'Inventory'
+
+
+<ManagePage>:
+    name: 'manage'
+    BoxLayout:
+        TitleLabel:
+            text: 'Manage'

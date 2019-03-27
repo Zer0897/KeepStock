@@ -1,9 +1,8 @@
-import src.widget.form
 from kivy.app import App
-from src.page.manage import PageManager
-
+from src.page import View
+from src.widget import NavigationBar
 
 class KeepStockApp(App):
 
     def build(self):
-        return PageManager()
+        return View()

@@ -34,7 +34,7 @@ class Form(BoxLayout):
 
 
 class Entry(TextInput):
-    ...
+    pass
 
 
 class NamedEntry(BoxLayout):
@@ -43,7 +43,3 @@ class NamedEntry(BoxLayout):
         self.id = self.name = name
 
         super().__init__(*args, **kwds)
-
-
-class BaseLabel(Label):
-    pass
