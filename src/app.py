@@ -1,3 +1,4 @@
+import widget
 from kivy.app import App
 from pages.manager import Manager
 
