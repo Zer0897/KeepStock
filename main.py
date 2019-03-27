@@ -11,9 +11,11 @@ def android():
         ], stderr=PIPE
     )
     while p.stderr.readable():
-        line = re.match(r'^.+python.+$', p.stderr.readline().decode('utf-8'))
-        if line:
-            print(*line.group(), sep='')
+        match = re.match(
+            r'^.+python.+$', p.stderr.readline().decode('utf-8')
+            )
+        if match is not None:
+            print(match.group())
 
 
 def start():
