@@ -1,11 +1,9 @@
-from kivy.uix.gridlayout import GridLayout
 from kivy.properties import StringProperty
 from kivy.uix.popup import Popup
-from kivy.factory import Factory
 
 from enum import Enum
 from kivy.uix.boxlayout import BoxLayout
-from widget import BaseLabel
+
 
 class Notify(BoxLayout):
     message = StringProperty()

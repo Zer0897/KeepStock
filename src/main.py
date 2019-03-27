@@ -1,5 +1,3 @@
-from kivy.lang import Builder
-
 from app import KeepStockApp
 
 

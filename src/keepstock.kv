@@ -131,7 +131,7 @@
 
             PrimaryButton:
                 text: 'Submit'
-                on_press: root.submit()
+                on_press: root.parent.manager.current = 'menu'
 
 <SplashPage>:
     anchor_x: 'center'
@@ -141,6 +141,6 @@
         id: login
 
 
-<OverviewPage>:
+<MenuPage>:
     TitleLabel:
         text: 'Foo'

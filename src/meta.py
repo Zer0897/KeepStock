@@ -1,14 +1,12 @@
 import inspect
 import importlib
-from pathlib import Path
+from path import SRC
 from kivy.uix.screenmanager import Screen
 
-DIR = Path(__file__).parent
 
-
-def get_pages():
+def get_pages() -> dict:
     pages = {}
-    for name in map(inspect.getmodulename, DIR.rglob('*.py')):
+    for name in map(inspect.getmodulename, SRC.rglob('*.py')):
         mod = importlib.import_module(name)
         members = inspect.getmembers(mod, inspect.isclass)
         pages.update(
