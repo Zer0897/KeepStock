@@ -17,3 +17,5 @@ class Manager(ScreenManager):
 
         for name, page in pages.items():
             self.add_widget(page(name=name))
+
+        self.current = 'splash'
