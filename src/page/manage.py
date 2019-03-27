@@ -1,7 +1,7 @@
 from kivy.uix.screenmanager import ScreenManager
 
-from page.splash import SplashPage, LoginPage
-from page.menu import MenuPage
+from src.page.splash import SplashPage, LoginPage
+from src.page.menu import MenuPage
 
 pages = {
     'splash': SplashPage,

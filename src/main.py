@@ -1,4 +1,4 @@
-from app import KeepStockApp
+from src.app import KeepStockApp
 
 
 def run():
