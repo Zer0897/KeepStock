@@ -10,7 +10,7 @@ def android():
         'android', 'debug', 'deploy', 'run', 'logcat'
         ], stderr=PIPE
     )
-    while True:
+    while p.stderr.readable():
         line = re.match(r'^.+python.+$', p.stderr.readline().decode('utf-8'))
         if line:
             print(*line.group(), sep='')
