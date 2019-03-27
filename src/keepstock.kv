@@ -1,5 +1,7 @@
 #:kivy 1.10.1
 
+#:import screenmanager kivy.uix.screenmanager
+
 #:set primary_color (1, .4, 0, 1)
 #:set secondary_color (.5, .5, .5, 1)
 #:set red (1, 0, 0, 1)
@@ -117,10 +119,10 @@
 
 <NavigationBar>:
     manager: None
-    items: ['Inventory', 'Manage']
 
 
 <NavigationButton>:
+    on_state: self.disabled = self.state == 'down'
     on_press: root.parent.manager.current = self.text.lower()
 
 
@@ -168,18 +170,25 @@
         orientation: 'vertical'
         ScreenManager:
             id: manager
-            InventoryPage:
+            transition: screenmanager.SlideTransition(direction='up', duration=.2)
+            ViewPage:
             ManagePage:
+            InPage:
+            OutPage:
+
 
         NavigationBar:
             manager: manager
+            items: ['View', 'Manage', 'In', 'Out']
+            size_hint_y: None
+            height: '200sp'
 
 
-<InventoryPage>:
-    name: 'inventory'
+<ViewPage>:
+    name: 'view'
     BoxLayout:
         TitleLabel:
-            text: 'Inventory'
+            text: 'View'
 
 
 <ManagePage>:
@@ -187,3 +196,16 @@
     BoxLayout:
         TitleLabel:
             text: 'Manage'
+
+
+<InPage>:
+    name: 'in'
+    BoxLayout:
+        TitleLabel:
+            text: 'In'
+
+<OutPage>:
+    name: 'out'
+    BoxLayout:
+        TitleLabel:
+            text: 'Out'
