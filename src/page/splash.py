@@ -1,5 +1,5 @@
 from kivy.uix.screenmanager import Screen
-from notify import Notification
+from widget.notify import Notification
 
 
 class LoginPage(Screen):

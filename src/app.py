@@ -1,6 +1,6 @@
-import widget
+import widget.form
 from kivy.app import App
-from pages.manager import PageManager
+from page.manage import PageManager
 
 
 class KeepStockApp(App):
