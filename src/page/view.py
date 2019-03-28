@@ -1,4 +1,7 @@
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import Screen
+from kivy.properties import ListProperty
+from src.widget.navigate import NavigationBar
 
 
 class BaseView(BoxLayout):
@@ -14,8 +17,4 @@ class SecondaryView(BaseView):
 
 
 class Page(PrimaryView):
-    pass
-
-
-class Window(SecondaryView):
     pass

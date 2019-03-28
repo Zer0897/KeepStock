@@ -18,4 +18,3 @@ class NavigationBar(BoxLayout):
             self.add_widget(btn)
             if btn.text.lower() == self.manager.current.lower():
                 btn.state = 'down'
-

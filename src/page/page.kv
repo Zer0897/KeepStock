@@ -5,7 +5,6 @@
 
 <SplashPage>:
     name: 'splash'
-
     LoginPage:
         id: login
 
@@ -43,33 +42,33 @@
 <MenuPage>:
     name: 'menu'
 
-    BoxLayout:
-        orientation: 'vertical'
+    PrimaryView:
+        manager: manager
+        navbar: navbar
+        navitems: ['manage', 'in', 'out', 'view']
+
         ScreenManager:
             id: manager
             transition: screenmanager.SlideTransition(direction='up', duration=.2)
+            current: 'view'
             ViewPage:
             ManagePage:
             InPage:
             OutPage:
 
-
         NavigationBar:
-            manager: manager
-            items: ['View', 'In', 'Out', 'Manage']
-            size_hint_y: None
-            height: '200sp'
-            padding_x: '50sp'
+            id: navbar
 
 
 <BaseView>:
     orientation: 'vertical'
-    ScreenManager:
-        id: manager
-        current: 'splash'
 
-        SplashPage:
-        MenuPage:
+    manager: None
+    navitems: None
+    navbar: None
+    on_navitems:
+        self.navbar.manager = self.manager
+        self.navbar.items = self.navitems
 
 
 <ViewPage>:
