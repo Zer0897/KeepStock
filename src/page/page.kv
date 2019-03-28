@@ -1,0 +1,99 @@
+#:kivy 1.10.1
+
+#:import screenmanager kivy.uix.screenmanager
+
+
+<SplashPage>:
+    name: 'splash'
+
+    LoginPage:
+        id: login
+
+
+<LoginPage>:
+    name: 'login'
+    form: form
+    BoxLayout:
+        orientation: 'vertical'
+
+        AnchorLayout:
+            size_hint: 1, .4
+            anchor_y: 'top'
+
+            TitleLabel:
+                text: 'KeepStock'
+
+        AnchorLayout:
+            halign: 'center'
+            Form:
+                id: form
+                entries: ['Username', 'Password']
+                private: ['Password']
+                required: self.entries
+
+        AnchorLayout:
+            anchor_y: 'bottom'
+            size_hint: 1, .6
+
+            PrimaryButton:
+                text: 'Submit'
+                on_press: root.parent.manager.current = 'menu'
+
+
+<MenuPage>:
+    name: 'menu'
+
+    BoxLayout:
+        orientation: 'vertical'
+        ScreenManager:
+            id: manager
+            transition: screenmanager.SlideTransition(direction='up', duration=.2)
+            ViewPage:
+            ManagePage:
+            InPage:
+            OutPage:
+
+
+        NavigationBar:
+            manager: manager
+            items: ['View', 'In', 'Out', 'Manage']
+            size_hint_y: None
+            height: '200sp'
+            padding_x: '50sp'
+
+
+<BaseView>:
+    orientation: 'vertical'
+    ScreenManager:
+        id: manager
+        current: 'splash'
+
+        SplashPage:
+        MenuPage:
+
+
+<ViewPage>:
+    name: 'view'
+    BoxLayout:
+        TitleLabel:
+            text: 'View'
+
+
+<ManagePage>:
+    name: 'manage'
+    BoxLayout:
+        TitleLabel:
+            text: 'Manage'
+
+
+<InPage>:
+    name: 'in'
+    BoxLayout:
+        TitleLabel:
+            text: 'In'
+
+<OutPage>:
+    name: 'out'
+    BoxLayout:
+        TitleLabel:
+            text: 'Out'

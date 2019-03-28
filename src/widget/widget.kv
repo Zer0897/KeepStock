@@ -1,0 +1,114 @@
+#:kivy 1.10.1
+
+#:set primary_color (1, .4, 0, 1)
+#:set secondary_color (.5, .5, .5, 1)
+#:set red (1, 0, 0, 1)
+
+
+<BaseLabel>:
+    size: self.texture_size
+    text_size: root.width, None
+    font_size: '20sp'
+
+
+<PrimaryLabel>:
+    color: primary_color
+
+
+<SecondaryLabel>:
+    color: secondary_color
+
+
+<HeadingLabel>:
+    halign: 'center'
+    font_size: '40sp'
+
+
+<TitleLabel>:
+    font_size: '70sp'
+    halign: 'center'
+    valign: 'top'
+
+
+<BaseButton>:
+    font_size: '30sp'
+    size_hint: .9, .5
+
+
+<PrimaryButton@BaseButton>:
+    background_color: secondary_color
+
+
+<Notify>:
+    btn: btn
+    orientation: 'vertical'
+    BaseLabel:
+        halign: 'center'
+        valign: 'center'
+        text: root.message
+        font_size: '30sp'
+
+    AnchorLayout:
+        anchor_y: 'bottom'
+        BaseButton:
+            id: btn
+            text: 'Okay'
+
+
+<Warn>:
+    color: red
+
+
+<Err>:
+    bold: True
+
+
+<Notification>:
+    title: root.severity.name.title()
+    title_align: 'center'
+    title_color: primary_color
+    title_size: '50sp'
+    size_hint: .8, .8
+    content: root.severity.value()
+
+
+<Form>:
+    orientation: 'vertical'
+
+
+<Entry>:
+    multiline: False
+    selection_color: (*primary_color[:-1], .5)
+    on_triple_tap: root.on_quad_touch()
+    write_tab: False
+    required: False
+    font_size: self.height / 2
+
+
+<NamedEntry>:
+    value: value
+    required: False
+    password: False
+    orientation: 'vertical'
+
+    HeadingLabel:
+        text: root.name.title()
+
+    AnchorLayout:
+        anchor_y: 'center'
+        Entry:
+            id: value
+            size_hint: .5, .5
+            password: root.password
+            hint_text: '*' if root.required else ''
+            hint_text_color: red[:-1] + (.7,)
+
+
+<NavigationBar>:
+    manager: None
+
+
+<NavigationButton>:
+    font_size: '25sp'
+    on_state: self.disabled = self.state == 'down'
+    on_press: root.parent.manager.current = self.text.lower()
