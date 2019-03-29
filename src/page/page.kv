@@ -43,56 +43,82 @@
     name: 'menu'
 
     PrimaryView:
-        manager: manager
-        navbar: navbar
-        navitems: ['manage', 'in', 'out', 'view']
-
         ScreenManager:
             id: manager
-            transition: screenmanager.SlideTransition(direction='up', duration=.2)
             current: 'view'
             ViewPage:
-            ManagePage:
+            EditPage:
             InPage:
             OutPage:
 
         NavigationBar:
             id: navbar
+            manager: manager
+            size_hint_y: None
+            height: '130sp'
+            items: ['Edit', 'In', 'Out', 'View']
 
 
 <BaseView>:
     orientation: 'vertical'
+    title: ""
 
-    manager: None
-    navitems: None
-    navbar: None
-    on_navitems:
-        self.navbar.manager = self.manager
-        self.navbar.items = self.navitems
+
+<SecondaryView>:
+    canvas:
+        Color:
+            rgba: secondary_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
 
 <ViewPage>:
     name: 'view'
-    BoxLayout:
-        TitleLabel:
-            text: 'View'
+
+    HeaderBar:
+        id: header
+        title: root.name.title()
+        size_hint_y: None
+        height: '40sp'
+
+        NavigationBar:
+            manager: manager
+            items: ['Foo', 'Faa']
+
+    ScreenManager:
+        id: manager
+        transition: screenmanager.SlideTransition(direction='up')
+        Screen:
+            name: 'foo'
+            PrimaryView:
+                PrimaryLabel:
+                    text: 'Foo'
+        Screen:
+            name: 'faa'
+            PrimaryLabel:
+                text: 'Faa'
 
 
-<ManagePage>:
-    name: 'manage'
-    BoxLayout:
-        TitleLabel:
-            text: 'Manage'
+
+<EditPage>:
+    name: 'edit'
+    title: self.name.title()
+    SecondaryView:
+        id: view
+        title: root.title
 
 
 <InPage>:
     name: 'in'
-    BoxLayout:
-        TitleLabel:
-            text: 'In'
+    title: self.name.title()
+    SecondaryView:
+        id: view
+        title: root.title
 
 <OutPage>:
     name: 'out'
-    BoxLayout:
-        TitleLabel:
-            text: 'Out'
+    title: self.name.title()
+    SecondaryView:
+        id: view
+        title: root.title

@@ -5,7 +5,7 @@ class ViewPage(Screen):
     pass
 
 
-class ManagePage(Screen):
+class EditPage(Screen):
     pass
 
 

@@ -106,12 +106,30 @@
 
 <NavigationBar>:
     manager: None
-    size_hint_y: None
-    height: '200sp'
-    padding_x: '50sp'
+    buttons: buttons
+
+    AnchorLayout:
+        BoxLayout:
+            size_hint: .95, .9
+            anchor: 'center', 'top'
+            spacing: '10sp'
+            manager: root.manager
+            id: buttons
+
 
 
 <NavigationButton>:
     font_size: '25sp'
-    on_state: self.disabled = self.state == 'down'
-    on_press: root.parent.manager.current = self.text.lower()
+    size_hint: 1, 1
+
+
+
+
+<HeaderBar>:
+    title: ""
+
+    TitleLabel:
+        font_size: '25sp'
+        size_hint_x: None
+        width: '80sp'
+        text: root.title
