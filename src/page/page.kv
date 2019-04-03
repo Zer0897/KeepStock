@@ -75,30 +75,52 @@
 
 <ViewPage>:
     name: 'view'
+    BoxLayout:
+        orientation: 'vertical'
+        HeaderBar:
+            id: header
+            title: root.name.title()
+            size_hint_y: None
+            height: '40sp'
 
-    HeaderBar:
-        id: header
-        title: root.name.title()
-        size_hint_y: None
-        height: '40sp'
+            NavigationBar:
+                manager: manager
+                items: ['Shelf', 'Me','1', '2', '3']
 
-        NavigationBar:
-            manager: manager
-            items: ['Foo', 'Faa']
+        ScreenManager:
+            id: manager
+            transition: screenmanager.SlideTransition(direction='up')
 
-    ScreenManager:
-        id: manager
-        transition: screenmanager.SlideTransition(direction='up')
-        Screen:
-            name: 'foo'
-            PrimaryView:
-                PrimaryLabel:
-                    text: 'Foo'
-        Screen:
-            name: 'faa'
-            PrimaryLabel:
-                text: 'Faa'
+            InventoryPage:
+                name: 'shelf'
+                text: self.name.title()
 
+            InventoryPage:
+                name: '1'
+                text: self.name.title()
+
+            InventoryPage:
+                name: '2'
+                text: self.name.title()
+
+            InventoryPage:
+                name: '3'
+                text: self.name.title()
+
+            InventoryPage:
+                name: 'me'
+                text: self.name.title()
+
+
+
+<InventoryPage@Screen>:
+    text: ''
+    BoxLayout:
+        PrimaryLabel:
+            text: root.text
+            size_hint_x: None
+            width: '50sp'
+        SecondaryView:
 
 
 <EditPage>:
