@@ -1,21 +1,14 @@
 import sys
 import re
-from subprocess import Popen, PIPE
+import subprocess as subp
 from src.main import run
 
 
 def android():
-    p = Popen([
-        sys.executable, '-m', 'buildozer',
+    subp.run([
+        sys.executable, '-m', 'buildozer', '-v',
         'android', 'debug', 'deploy', 'run', 'logcat'
-        ], stderr=PIPE
-    )
-    while p.stderr.readable():
-        match = re.match(
-            r'^.+python.+$', p.stderr.readline().decode('utf-8')
-            )
-        if match is not None:
-            print(match.group())
+        ])
 
 
 def start():

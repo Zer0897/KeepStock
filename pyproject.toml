@@ -8,6 +8,11 @@ authors = ["Noah <noahcorona231@gmail.com>"]
 python = "^3.6"
 cython = "^0.29.6"
 kivy = "^1.10"
+opencv-python = "^4.0"
+kivy-garden = "^0.1.4"
+requests = "^2.21"
+pillow = "^6.0"
+pyzbar = "^0.1.8"
 
 [tool.poetry.dev-dependencies]
 buildozer = "^0.39.0"

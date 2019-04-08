@@ -1,6 +1,7 @@
 from src.widget.form import Form
 from src.widget.notify import Notification
 from src.widget.navigate import NavigationBar
+from src.widget.camera import Scanner
 
 from pathlib import Path
 

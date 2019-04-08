@@ -144,3 +144,22 @@
     SecondaryView:
         id: view
         title: root.title
+
+        AnchorLayout:
+
+            Scanner:
+                id: scanner
+                # play: True
+                # resolution: self.size
+
+        AnchorLayout:
+            PrimaryButton:
+                text: "Capture"
+                size_hint: .4, .4
+                on_press:
+                    camera.play = not camera.play
+
+        AnchorLayout:
+            PrimaryLabel:
+                text: ", ".join([str(symbol.data) for symbol in scanner.symbols])
+
