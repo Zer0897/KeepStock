@@ -1,1 +1,1 @@
-
+from .zbarcam import ZBarCam
