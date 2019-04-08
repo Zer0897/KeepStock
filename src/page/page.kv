@@ -149,15 +149,14 @@
 
             Scanner:
                 id: scanner
-                # play: True
-                # resolution: self.size
+                play: False
 
         AnchorLayout:
             PrimaryButton:
                 text: "Capture"
                 size_hint: .4, .4
                 on_press:
-                    camera.play = not camera.play
+                    scanner.play = not scanner.play
 
         AnchorLayout:
             PrimaryLabel:

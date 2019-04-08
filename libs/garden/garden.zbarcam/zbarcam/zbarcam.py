@@ -124,6 +124,14 @@ class ZBarCam(AnchorLayout):
     def is_ios():
         return platform == 'ios'
 
+    @property
+    def play(self):
+        return self.xcamera.play
+
+    @play.setter
+    def play(self, val):
+        self.xcamera.play = val
+
 
 DEMO_APP_KV_LANG = """
 #:import ZBarSymbol pyzbar.pyzbar.ZBarSymbol
