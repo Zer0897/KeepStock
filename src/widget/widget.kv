@@ -32,10 +32,9 @@
 
 <BaseButton>:
     font_size: '30sp'
-    size_hint: .9, .5
 
 
-<PrimaryButton@BaseButton>:
+<PrimaryButton>:
     background_color: secondary_color
 
 
@@ -130,3 +129,18 @@
         size_hint_x: None
         width: '80sp'
         text: root.title
+
+
+
+<NavigationMenu>:
+    manager: None
+    items: []
+    selector: selector
+    PrimaryButton:
+        id: selector
+        text: 'Foo'
+        on_release: dropdown.open(self)
+    DropDownMenu:
+        id: dropdown
+        manager: root.manager
+        items: root.items
