@@ -15,10 +15,10 @@
 
 
 <NavigationButton>:
-    manager: None
     font_size: '25sp'
     size_hint: 1, 1
-    on_navigation: self.text = self.navigation.text
+    on_navigation: self.text = self.navigation.text; self.refresh()
+    on_state: self.update_group()
 
 
 <HeaderBar>:
@@ -31,18 +31,15 @@
         text: root.title
 
 
-<NavigationMenu>:
+<DropDownMenu>:
     manager: None
     name: None
     items: []
     selector: selector
 
     on_name: selector.text = self.name
-    on_item_height: self.dropdown.item_height = self.item_height
     on_manager: self.dropdown.manager = self.manager
     PrimaryButton:
         id: selector
         text: 'Select'
-        on_release:
-            if not root.dropdown.items: root.dropdown.items = root.items
-            root.dropdown.open(self)
+        on_release: root.dropdown.open(self)
