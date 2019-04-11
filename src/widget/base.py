@@ -1,7 +1,6 @@
 from kivy.uix.label import Label
-from kivy.uix.button import Button, ButtonBehavior
-from kivy.uix.widget import Widget
-from kivy.vector import Vector
+from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
 
 
 class BaseLabel(Label):
@@ -35,3 +34,6 @@ class PrimaryButton(BaseButton):
 class SecondaryButton(BaseButton):
     pass
 
+
+class HeaderBar(BoxLayout):
+    pass

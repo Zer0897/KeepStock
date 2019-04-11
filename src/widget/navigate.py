@@ -100,7 +100,3 @@ class DropDownMenu(BoxLayout, NavigationContainerBehavior):
 
     def add_button(self, btn):
         self.dropdown.add_widget(btn)
-
-
-class HeaderBar(BoxLayout):
-    pass
