@@ -1,0 +1,46 @@
+#:kivy 1.10.1
+
+
+<NavigationBar>:
+    manager: None
+    buttons: buttons
+
+    AnchorLayout:
+        BoxLayout:
+            size_hint: .95, .9
+            anchor: 'center', 'top'
+            spacing: '5sp'
+            manager: root.manager
+            id: buttons
+
+
+<NavigationButton>:
+    manager: None
+    font_size: '25sp'
+    size_hint: 1, 1
+    on_navigation: self.text = self.navigation.text
+
+
+<HeaderBar>:
+    title: ""
+
+    TitleLabel:
+        font_size: '25sp'
+        size_hint_x: None
+        width: '80sp'
+        text: root.title
+
+
+<NavigationMenu>:
+    manager: None
+    items: []
+    selector: selector
+
+    on_item_height: self.dropdown.item_height = self.item_height
+    on_manager: self.dropdown.manager = self.manager
+    PrimaryButton:
+        id: selector
+        text: 'Select'
+        on_release:
+            if not root.dropdown.items: root.dropdown.items = root.items
+            root.dropdown.open(self)

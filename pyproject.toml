@@ -21,6 +21,7 @@ flake8 = "^3.7"
 [tool.poetry.scripts]
 start = 'main:start'
 android = 'main:android'
+
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"

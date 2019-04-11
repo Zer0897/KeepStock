@@ -1,0 +1,35 @@
+#:kivy 1.10.1
+
+#:set primary_color (1, .4, 0, 1)
+
+
+<Form>:
+    orientation: 'vertical'
+
+
+<Entry>:
+    multiline: False
+    selection_color: (*primary_color[:-1], .5)
+    on_triple_tap: root.on_quad_touch()
+    write_tab: False
+    required: False
+    font_size: self.height / 2
+
+
+<NamedEntry>:
+    value: value
+    required: False
+    password: False
+    orientation: 'vertical'
+
+    HeadingLabel:
+        text: root.name.title()
+
+    AnchorLayout:
+        anchor_y: 'center'
+        Entry:
+            id: value
+            size_hint: .5, .5
+            password: root.password
+            hint_text: '*' if root.required else ''
+            hint_text_color: red[:-1] + (.7,)

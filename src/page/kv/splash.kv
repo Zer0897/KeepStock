@@ -1,0 +1,36 @@
+#:kivy 1.10.1
+
+<SplashPage>:
+    name: 'splash'
+    LoginPage:
+        id: login
+
+
+<LoginPage>:
+    name: 'login'
+    form: form
+    BoxLayout:
+        orientation: 'vertical'
+
+        AnchorLayout:
+            size_hint: 1, .4
+            anchor_y: 'top'
+
+            TitleLabel:
+                text: 'KeepStock'
+
+        AnchorLayout:
+            halign: 'center'
+            Form:
+                id: form
+                entries: ['Username', 'Password']
+                private: ['Password']
+                required: self.entries
+
+        AnchorLayout:
+            anchor_y: 'bottom'
+            size_hint: 1, .6
+
+            PrimaryButton:
+                text: 'Submit'
+                on_press: root.parent.manager.current = 'menu'

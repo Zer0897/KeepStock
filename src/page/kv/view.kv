@@ -1,0 +1,47 @@
+#:kivy 1.10.1
+
+#:import screenmanager kivy.uix.screenmanager
+
+
+<ViewPage>:
+    name: 'view'
+    BoxLayout:
+        orientation: 'vertical'
+        HeaderBar:
+            id: header
+            title: root.name.title()
+            size_hint_y: None
+            height: '40sp'
+
+            NavigationMenu:
+                manager: manager
+                item_height: '50sp'
+                items:
+                    [
+                    NavigationItem('Shelf', 'shelf'),
+                    NavigationItem('Me', 'me')
+                    ]
+
+        ScreenManager:
+            id: manager
+            transition: screenmanager.SlideTransition(direction='up')
+
+            InventoryPage:
+                name: 'shelf'
+                text: self.name.title()
+
+            InventoryPage:
+                name: '1'
+                text: self.name.title()
+
+            InventoryPage:
+                name: '2'
+                text: self.name.title()
+
+            InventoryPage:
+                name: '3'
+                text: self.name.title()
+
+            InventoryPage:
+                name: 'me'
+                text: self.name.title()

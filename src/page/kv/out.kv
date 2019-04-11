@@ -1,0 +1,26 @@
+#:kivy 1.10.1
+
+<OutPage>:
+    name: 'out'
+    title: self.name.title()
+    SecondaryView:
+        id: view
+        title: root.title
+
+        AnchorLayout:
+
+            Scanner:
+                id: scanner
+                play: False
+
+        AnchorLayout:
+            PrimaryButton:
+                text: "Capture"
+                size_hint: .4, .4
+                on_press:
+                    scanner.play = not scanner.play
+
+        AnchorLayout:
+            PrimaryLabel:
+                text: "Found: " + ", ".join([str(symbol.data) for symbol in scanner.symbols])
+
