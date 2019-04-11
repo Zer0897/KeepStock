@@ -1,7 +1,8 @@
 import sys
-import os
+from pathlib import Path
 
-SRC, _ = os.path.split(os.path.abspath(__file__))
-ROOT, _ = os.path.split(SRC)
 
-sys.path.append(ROOT)
+SRC = Path(__file__).parent
+ROOT = SRC.parent
+
+sys.path.append(str(ROOT))
