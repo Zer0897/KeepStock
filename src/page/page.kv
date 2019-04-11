@@ -1,6 +1,7 @@
 #:kivy 1.10.1
 
 #:import screenmanager kivy.uix.screenmanager
+#:import NavigationItem src.widget.navigate.NavigationItem
 
 
 <SplashPage>:
@@ -56,7 +57,13 @@
             manager: manager
             size_hint_y: None
             height: '130sp'
-            items: ['Edit', 'In', 'Out', 'View']
+            items:
+                [
+                NavigationItem('Edit', 'edit'),
+                NavigationItem('In', 'in'),
+                NavigationItem('Out', 'out'),
+                NavigationItem('View', 'view')
+                ]
 
 
 <BaseView>:
@@ -85,8 +92,12 @@
 
             NavigationMenu:
                 manager: manager
-                item_height: '30sp'
-                items: ['Shelf', 'Me']
+                item_height: '50sp'
+                items:
+                    [
+                    NavigationItem('Shelf', 'shelf'),
+                    NavigationItem('Me', 'me')
+                    ]
 
         ScreenManager:
             id: manager
@@ -111,7 +122,6 @@
             InventoryPage:
                 name: 'me'
                 text: self.name.title()
-
 
 
 <InventoryPage@Screen>:

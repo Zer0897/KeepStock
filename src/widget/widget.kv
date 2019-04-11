@@ -117,8 +117,10 @@
 
 
 <NavigationButton>:
+    manager: None
     font_size: '25sp'
     size_hint: 1, 1
+    on_navigation: self.text = self.navigation.text
 
 
 <HeaderBar>:
@@ -131,16 +133,16 @@
         text: root.title
 
 
-
 <NavigationMenu>:
     manager: None
     items: []
     selector: selector
+
+    on_item_height: self.dropdown.item_height = self.item_height
+    on_manager: self.dropdown.manager = self.manager
     PrimaryButton:
         id: selector
-        text: 'Foo'
-        on_release: dropdown.open(self)
-    DropDownMenu:
-        id: dropdown
-        manager: root.manager
-        items: root.items
+        text: 'Select'
+        on_release:
+            if not root.dropdown.items: root.dropdown.items = root.items
+            root.dropdown.open(self)
