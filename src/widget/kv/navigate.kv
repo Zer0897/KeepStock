@@ -33,9 +33,11 @@
 
 <NavigationMenu>:
     manager: None
+    name: None
     items: []
     selector: selector
 
+    on_name: selector.text = self.name
     on_item_height: self.dropdown.item_height = self.item_height
     on_manager: self.dropdown.manager = self.manager
     PrimaryButton:

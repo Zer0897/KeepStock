@@ -7,7 +7,7 @@ def android():
     subp.run([
         sys.executable, '-m', 'buildozer', '-v',
         'android', 'debug', 'deploy', 'run', 'logcat'
-        ])
+    ])
 
 
 def start():

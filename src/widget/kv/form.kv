@@ -18,12 +18,16 @@
 
 <NamedEntry>:
     value: value
+    name: None
     required: False
     password: False
     orientation: 'vertical'
 
+    on_name: heading.text = self.name
+
     HeadingLabel:
-        text: root.name.title()
+        id: heading
+        text: ''
 
     AnchorLayout:
         anchor_y: 'center'
