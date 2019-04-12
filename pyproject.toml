@@ -5,7 +5,7 @@ description = ""
 authors = ["Noah <noahcorona231@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 cython = "^0.29.6"
 kivy = "^1.10"
 opencv-python = "^4.0"
@@ -13,6 +13,7 @@ kivy-garden = "^0.1.4"
 requests = "^2.21"
 pillow = "^6.0"
 pyzbar = "^0.1.8"
+pygame = "^1.9"
 
 [tool.poetry.dev-dependencies]
 buildozer = "^0.39.0"

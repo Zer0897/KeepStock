@@ -1,10 +1,12 @@
+from __future__ import annotations
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.behaviors.togglebutton import ToggleButtonBehavior
-from kivy.uix.dropdown import DropDown
-from kivy.uix.screenmanager import ScreenManager
 from kivy.properties import ListProperty, ObjectProperty
+from kivy.uix.screenmanager import ScreenManager
 from kivy.clock import Clock, ClockEvent
-from typing import NamedTuple, Optional
+from kivy.uix.dropdown import DropDown
+from typing import NamedTuple, Optional, List
+
 from src.widget.base import PrimaryButton
 
 
@@ -37,11 +39,14 @@ class NavigationButton(ToggleButtonBehavior, PrimaryButton):
         NavigationButton._current_event = Clock.schedule_once(navigate, time_remaining)
 
     def update_group(self):
-        for btn in ToggleButtonBehavior.get_widgets(self.group):
+        for btn in self.group_widgets():
             btn.refresh()
 
     def refresh(self):
         self.selected = self.selected  # State of button reflects the current screen
+
+    def group_widgets(self) -> List[NavigationButton]:
+        return ToggleButtonBehavior.get_widgets(self.group)
 
     @property
     def selected(self) -> bool:
