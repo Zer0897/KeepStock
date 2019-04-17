@@ -12,6 +12,7 @@ from PIL import ImageOps
 from pyzbar import pyzbar
 
 MODULE_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
+loaded = False
 
 
 class ZBarCam(AnchorLayout):
@@ -30,7 +31,10 @@ class ZBarCam(AnchorLayout):
         self._request_android_permissions()
         # lazy loading the kv file rather than loading at module level,
         # that way the `XCamera` import doesn't happen too early
-        Builder.load_file(os.path.join(MODULE_DIRECTORY, "zbarcam.kv"))
+        global loaded
+        if not loaded:
+            Builder.load_file(os.path.join(MODULE_DIRECTORY, "zbarcam.kv"))
+            loaded = False
         super(ZBarCam, self).__init__(**kwargs)
         Clock.schedule_once(lambda dt: self._setup())
 

@@ -1,4 +1,3 @@
-from __future__ import annotations
 from src.widget.notify import Notification
 from kivy.garden.zbarcam.zbarcam import ZBarCam
 from kivy.clock import Clock
@@ -13,10 +12,8 @@ class Scanner(ZBarCam):
     def __init__(self, *args, **kwds):
         super().__init__(*args, **kwds)
 
-        self.capture = Clock.schedule_once(self.parse, 0)
-
-    def on_symbols(self, *args):
-        self.capture()
+        self.capture = Clock.create_trigger(self.parse, .05)
+        self.bind(symbols=self.capture)
 
     def parse(self, *args):
         if self.symbols:

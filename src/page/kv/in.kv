@@ -6,4 +6,14 @@
     SecondaryView:
         id: view
         title: root.title
+    # AnchorLayout:
+    #     Scanner:
+    #         id: scanner
+
+    AnchorLayout:
+        PrimaryButton:
+            text: "Toggle"
+            size_hint: .4, .4
+            on_press:
+                scanner.play = not scanner.play
 
