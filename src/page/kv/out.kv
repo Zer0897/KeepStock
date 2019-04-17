@@ -15,7 +15,7 @@
 
         AnchorLayout:
             PrimaryButton:
-                text: "Start"
+                text: "Toggle"
                 size_hint: .4, .4
                 on_press:
-                    scanner.play = True
+                    scanner.play = not scanner.play
