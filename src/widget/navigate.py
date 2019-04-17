@@ -2,17 +2,19 @@ from __future__ import annotations
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.behaviors.togglebutton import ToggleButtonBehavior
 from kivy.properties import ListProperty, ObjectProperty
-from kivy.uix.screenmanager import ScreenManager
+from kivy.uix.screenmanager import ScreenManager, TransitionBase
 from kivy.clock import Clock, ClockEvent
 from kivy.uix.dropdown import DropDown
 from typing import NamedTuple, Optional, List
-
+from dataclasses import dataclass
 from src.widget.base import PrimaryButton
 
 
-class NavigationItem(NamedTuple):
+@dataclass
+class NavigationItem:
     text: str
-    screen_id: str
+    id: str
+    transition: TransitionBase = None
 
 
 class NavigationButton(ToggleButtonBehavior, PrimaryButton):
@@ -20,6 +22,13 @@ class NavigationButton(ToggleButtonBehavior, PrimaryButton):
     navigation: NavigationItem = ObjectProperty(None)
 
     _current_event: Optional[ClockEvent] = None
+
+    def __navigate(self):
+        prev = self.manager.transition
+        if self.navigation.transition:
+            self.manager.transition = self.navigation.transition
+        self.manager.current = self.navigation.id
+        self.manager.transition = prev
 
     def on_press(self, *args):
 
@@ -50,12 +59,12 @@ class NavigationButton(ToggleButtonBehavior, PrimaryButton):
 
     @property
     def selected(self) -> bool:
-        return self.navigation.screen_id == self.manager.current
+        return self.navigation.id == self.manager.current
 
     @selected.setter
     def selected(self, val: bool):
         if val:
-            self.manager.current = self.navigation.screen_id
+            self.__navigate()
             self.state = 'down'
         else:
             self.state = 'normal'
@@ -71,7 +80,7 @@ class NavigationContainerBehavior:
     item_height = '50sp'
 
     def on_items(self, *args):
-        btn_group = '|'.join(item.screen_id for item in self.items)
+        btn_group = '|'.join(item.id for item in self.items)
         NavigationButton.managers[btn_group] = self.manager
         for item in self.items:
             btn = self.create_button(group=btn_group)

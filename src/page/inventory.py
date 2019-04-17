@@ -15,3 +15,7 @@ class InPage(Screen):
 
 class OutPage(Screen):
     pass
+
+
+class ScanPage(Screen):
+    pass
