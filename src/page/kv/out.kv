@@ -15,12 +15,8 @@
 
         AnchorLayout:
             PrimaryButton:
-                text: "Capture"
+                text: "Start"
                 size_hint: .4, .4
                 on_press:
-                    scanner.play = not scanner.play
-
-        AnchorLayout:
-            PrimaryLabel:
-                text: "Found: " + ", ".join([str(symbol.data) for symbol in scanner.symbols])
-
+                    scanner.play = True
+                    scanner.capture()
