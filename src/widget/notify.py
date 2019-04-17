@@ -1,6 +1,5 @@
 from kivy.properties import StringProperty
 from kivy.uix.popup import Popup
-
 from enum import Enum
 from kivy.uix.boxlayout import BoxLayout
 
