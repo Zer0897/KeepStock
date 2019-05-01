@@ -3,7 +3,12 @@
 <InPage>:
     name: 'in'
     title: self.name.title()
-    SecondaryView:
-        id: view
-        title: root.title
-    
+    AnchorLayout:
+        NavigationBar:
+            manager: root.manager
+            size_hint: .5, .5
+
+            items:
+                [
+                NavigationItem('Scan', 'scan', screenmanager.SwapTransition())
+                ]
