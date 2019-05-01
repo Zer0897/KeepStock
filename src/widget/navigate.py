@@ -5,7 +5,7 @@ from kivy.properties import ListProperty, ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, TransitionBase
 from kivy.clock import Clock, ClockEvent
 from kivy.uix.dropdown import DropDown
-from typing import NamedTuple, Optional, List
+from typing import Optional, List
 from dataclasses import dataclass
 from src.widget.base import PrimaryButton
 

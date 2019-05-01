@@ -1,7 +1,6 @@
-from src.page.view import BaseView
+from src.page.page import BaseView, InventoryViewPage, InPage, OutPage, EditPage
 from src.page.splash import SplashPage
 from src.page.menu import MenuPage
-from src.page.inventory import ViewPage, InPage, OutPage, EditPage
 from typing import List
 from pathlib import Path
 
