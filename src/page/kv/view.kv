@@ -5,6 +5,7 @@
 
 <InventoryViewPage>:
     name: 'view'
+    sub_pages: [NavigationItem('Me', 'me'), NavigationItem('Shelf', 'shelf')]
 
     ScreenManager:
         id: manager
@@ -12,20 +13,8 @@
 
         InventoryView:
             name: 'shelf'
-            text: self.name.title()
-
-        InventoryView:
-            name: '1'
-            text: self.name.title()
-
-        InventoryView:
-            name: '2'
-            text: self.name.title()
-
-        InventoryView:
-            name: '3'
-            text: self.name.title()
+            title: self.name.title()
 
         InventoryView:
             name: 'me'
-            text: self.name.title()
+            title: self.name.title()

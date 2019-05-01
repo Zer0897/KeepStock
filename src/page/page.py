@@ -1,7 +1,7 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ListProperty
-from src.widget.navigate import DropDownMenu, NavigationItem
+from src.widget.navigate import DropDownMenu
 
 
 class BaseView(BoxLayout):
@@ -25,9 +25,10 @@ class Page(Screen):
 
     def on_sub_pages(self, *args):
         menu = DropDownMenu()
-        menu.manager = self.manager
+        menu.manager = self.ids['manager']
         menu.name = 'View'
-        menu.items = [NavigationItem(page.title, page.name) for page in self.sub_pages]
+        menu.items = self.sub_pages
+        self.header.add_widget(menu)
 
 
 class SubPage(Screen):
