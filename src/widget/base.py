@@ -48,7 +48,7 @@ class HeaderBar(BoxLayout):
 
 
 class Page(Screen):
-    _history = deque(maxlen=3)
+    _history = deque(maxlen=1)
 
     def __init__(self, *args, **kwds):
         super().__init__(*args, **kwds)
