@@ -1,7 +1,5 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
-from kivy.properties import ListProperty
-from src.widget.navigate import DropDownMenu
 
 
 class BaseView(BoxLayout):
@@ -21,17 +19,6 @@ class InventoryView(Screen):
 
 
 class Page(Screen):
-    sub_pages = ListProperty()
-
-    def on_sub_pages(self, *args):
-        menu = DropDownMenu()
-        menu.manager = self.ids['manager']
-        menu.name = 'View'
-        menu.items = self.sub_pages
-        self.header.add_widget(menu)
-
-
-class SubPage(Screen):
     pass
 
 

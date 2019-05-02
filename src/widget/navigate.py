@@ -12,9 +12,13 @@ from src.widget.base import PrimaryButton
 
 @dataclass
 class NavigationItem:
-    text: str
     id: str
+    _text: str = None
     transition: TransitionBase = None
+
+    @property
+    def text(self) -> str:
+        return self._text if self._text else self.id.title()
 
 
 class NavigationButton(ToggleButtonBehavior, PrimaryButton):
