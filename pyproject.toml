@@ -18,6 +18,7 @@ pygame = "^1.9"
 [tool.poetry.dev-dependencies]
 buildozer = "^0.39.0"
 flake8 = "^3.7"
+stackprinter = "^0.2.0"
 
 [tool.poetry.scripts]
 start = 'main:start'
