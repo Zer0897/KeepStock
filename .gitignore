@@ -1,8 +1,0 @@
-.vscode
-*pycache*
-.buildozer
-keepstock36
-bin/*
-log.txt
-*egg*
-pip-wheel-metadata
