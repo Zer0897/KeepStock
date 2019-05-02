@@ -1,0 +1,79 @@
+#:kivy 1.10.1
+
+#:set primary_color (1, .4, 0, 1)
+#:set secondary_color (.5, .5, .5, 1)
+
+
+<BaseLabel>:
+    size: self.texture_size
+    text_size: root.width, None
+    font_size: '20sp'
+
+
+<PrimaryLabel>:
+    color: primary_color
+
+
+<SecondaryLabel>:
+    color: secondary_color
+
+
+<HeadingLabel>:
+    halign: 'center'
+    font_size: '40sp'
+
+
+<TitleLabel>:
+    font_size: '70sp'
+    halign: 'center'
+    valign: 'top'
+
+
+<BaseButton>:
+    font_size: '30sp'
+
+
+<PrimaryButton>:
+    background_color: secondary_color
+
+
+<BaseView>:
+    orientation: 'vertical'
+    title: ""
+
+
+<SecondaryView>:
+    canvas:
+        Color:
+            rgba: secondary_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+<HeaderBar>:
+    menu_btn: menu
+    back_btn: back
+    content: content
+    title: ''
+    size_hint_y: .1
+    Button:
+        size_hint_x: .15
+        id: menu
+        background_color: 0, 0, 0, 1
+
+        Image:
+            source: str(root.menu_icon)
+            size: menu.size
+            pos: menu.pos
+            allow_stretch: True
+    BoxLayout:
+        id: content
+    PrimaryButton:
+        id: back
+        size_hint_x: .15
+        Image:
+            source: str(root.back_arrow)
+            size: back.size
+            pos: back.pos
+            allow_stretch: True

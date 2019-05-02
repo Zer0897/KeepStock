@@ -1,0 +1,10 @@
+#:kivy 1.10.1
+
+<InPage>:
+    name: 'in'
+    title: self.name.title()
+    AnchorLayout:
+        NavigationBar:
+            manager: root.manager
+            size_hint: .5, .5
+            items: [NavigationItem('scan', transition=screenmanager.SwapTransition())]

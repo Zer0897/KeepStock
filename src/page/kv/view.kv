@@ -1,0 +1,31 @@
+#:kivy 1.10.1
+
+#:import screenmanager kivy.uix.screenmanager
+
+
+<InventoryView>:
+    title: ''
+    SecondaryView:
+        TitleLabel:
+            text: root.title
+
+
+<InventoryViewPage>:
+    name: 'view'
+
+    BoxLayout:
+        orientation: 'vertical'
+        HeaderBar:
+            id: header
+
+        ScreenManager:
+            id: manager
+            transition: screenmanager.SlideTransition(direction='up')
+
+            InventoryView:
+                name: 'shelf'
+                title: self.name.title()
+
+            InventoryView:
+                name: 'me'
+                title: self.name.title()

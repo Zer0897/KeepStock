@@ -1,0 +1,12 @@
+#:kivy 1.10.1
+
+#:import screenmanager kivy.uix.screenmanager
+
+<OutPage>:
+    name: 'out'
+    title: self.name.title()
+    AnchorLayout:
+        NavigationBar:
+            manager: root.manager
+            size_hint: .5, .5
+            items: [NavigationItem('scan', transition=screenmanager.SwapTransition())]

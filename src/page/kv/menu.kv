@@ -1,0 +1,30 @@
+#:kivy 1.10.1
+
+#:import NavigationItem src.widget.navigate.NavigationItem
+
+
+<MenuPage>:
+    name: 'menu'
+
+    PrimaryView:
+        ScreenManager:
+            id: manager
+            current: 'view'
+            InventoryViewPage:
+            EditPage:
+            InPage:
+            OutPage:
+            ScanPage:
+
+        NavigationBar:
+            id: navbar
+            manager: manager
+            size_hint_y: None
+            height: '130sp'
+            items:
+                [
+                NavigationItem('edit'),
+                NavigationItem('in'),
+                NavigationItem('out'),
+                NavigationItem('view'),
+                ]
