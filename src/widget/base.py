@@ -43,6 +43,9 @@ class HeaderBar(BoxLayout):
     menu_icon = IMAGES / 'menu-icon.png'
     back_arrow = IMAGES / 'back-arrow.png'
 
+    def navigate_last_page(self, *args):
+        Page.navigate_last()
+
 
 class Page(Screen):
     _history = deque(maxlen=3)
@@ -54,4 +57,13 @@ class Page(Screen):
             Clock.schedule_once(self.build)
 
     def on_leave(self, *args):
-        type(self)._history.appendleft(self.name)
+
+        def navigate():
+            self.manager.current = self.name
+
+        self._history.appendleft(navigate)
+
+    @classmethod
+    def navigate_last(cls):
+        nav = cls._history.popleft()
+        nav()

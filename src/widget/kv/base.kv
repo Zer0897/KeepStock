@@ -61,7 +61,6 @@
         size_hint_x: .15
         id: menu
         background_color: 0, 0, 0, 1
-
         Image:
             source: str(root.menu_icon)
             size: menu.size
@@ -72,6 +71,7 @@
     PrimaryButton:
         id: back
         size_hint_x: .15
+        on_release: root.navigate_last_page()
         Image:
             source: str(root.back_arrow)
             size: back.size
