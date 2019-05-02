@@ -52,9 +52,24 @@
 
 
 <HeaderBar>:
-    btn: btn
+    menu_btn: menu
+    back_btn: back
+    content: content
     title: ''
-    SecondaryButton:
+    PrimaryButton:
         size_hint_x: .1
-        id: btn
-        text: 'foo'
+        id: menu
+        text: 'Menu'
+    BoxLayout:
+        id: content
+    SecondaryButton:
+        id: back
+        size_hint_x: .1
+        text: 'Back'
+
+
+<Page>:
+    header: header
+    HeaderBar:
+        id: header
+        size_hint_y: .15

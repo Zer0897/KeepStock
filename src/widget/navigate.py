@@ -97,6 +97,28 @@ class NavigationContainerBehavior:
     def create_button(self, **kwds):
         return NavigationButton(**kwds)
 
+    @classmethod
+    def auto_detect(cls, manager, *, itemkwds={}, exlude=set()):
+        """
+        Use the screens that `manager` is currently in control of to build
+        the navigation items.
+
+        Params:
+            manager : ScreenManager
+                The manager to use.
+            itemkwds : dict
+                Optional arguments to init the NavigationItem with.
+            exlude : iterable
+                An iterable of strings. Exlude any pages that have matching
+                names.
+        """
+        nav = cls()
+        nav.manager = manager
+        names = set(manager.screen_names) - set(exlude)
+
+        nav.items = [NavigationItem(name, **itemkwds) for name in names]
+        return nav
+
 
 class NavigationBar(BoxLayout, NavigationContainerBehavior):
 

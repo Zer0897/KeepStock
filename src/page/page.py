@@ -1,5 +1,8 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
+from src.widget.base import Page
+from src.widget.navigate import DropDownMenu
+from kivy.clock import Clock
 
 
 class BaseView(BoxLayout):
@@ -18,12 +21,17 @@ class InventoryView(Screen):
     pass
 
 
-class Page(Screen):
-    pass
-
-
 class InventoryViewPage(Page):
-    pass
+
+    def __init__(self, *args, **kwds):
+        super().__init__(*args, **kwds)
+
+        Clock.schedule_once(self.build)
+
+    def build(self, *args):
+        self.header.content.add_widget(
+            DropDownMenu.auto_detect(self.ids['manager'])
+        )
 
 
 class EditPage(Page):
