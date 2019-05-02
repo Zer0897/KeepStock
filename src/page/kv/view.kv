@@ -14,6 +14,10 @@
     name: 'view'
 
     BoxLayout:
+        orientation: 'vertical'
+        HeaderBar:
+            id: header
+
         ScreenManager:
             id: manager
             transition: screenmanager.SlideTransition(direction='up')

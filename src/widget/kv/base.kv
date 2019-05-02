@@ -56,20 +56,24 @@
     back_btn: back
     content: content
     title: ''
-    PrimaryButton:
-        size_hint_x: .1
+    size_hint_y: .1
+    Button:
+        size_hint_x: .15
         id: menu
-        text: 'Menu'
+        background_color: 0, 0, 0, 1
+
+        Image:
+            source: str(root.menu_icon)
+            size: menu.size
+            pos: menu.pos
+            allow_stretch: True
     BoxLayout:
         id: content
-    SecondaryButton:
+    PrimaryButton:
         id: back
-        size_hint_x: .1
-        text: 'Back'
-
-
-<Page>:
-    header: header
-    HeaderBar:
-        id: header
-        size_hint_y: .15
+        size_hint_x: .15
+        Image:
+            source: str(root.back_arrow)
+            size: back.size
+            pos: back.pos
+            allow_stretch: True

@@ -98,7 +98,7 @@ class NavigationContainerBehavior:
         return NavigationButton(**kwds)
 
     @classmethod
-    def auto_detect(cls, manager, *, itemkwds={}, exlude=set()):
+    def auto_detect(cls, manager, *, navconfig={}, itemconfig={}, exlude=set()):
         """
         Use the screens that `manager` is currently in control of to build
         the navigation items.
@@ -106,17 +106,19 @@ class NavigationContainerBehavior:
         Params:
             manager : ScreenManager
                 The manager to use.
-            itemkwds : dict
-                Optional arguments to init the NavigationItem with.
+            navconfig : dict
+                Optional arguments to init the Navigation widget with.
+            itemconfig : dict
+                Optional arguments to init the NavigationItem widget with.
             exlude : iterable
                 An iterable of strings. Exlude any pages that have matching
                 names.
         """
-        nav = cls()
+        nav = cls(**navconfig)
         nav.manager = manager
         names = set(manager.screen_names) - set(exlude)
 
-        nav.items = [NavigationItem(name, **itemkwds) for name in names]
+        nav.items = [NavigationItem(name, **itemconfig) for name in names]
         return nav
 
 
